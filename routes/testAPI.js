@@ -26,7 +26,8 @@ router.get('/messages', (req, res, next) => {
 
 router.post('/message', (req, res, next) => {
   let db = helper.connectToDb()
-  const queryTodb = `INSERT INTO messages (content) VALUES ("${req.body.message}");`
+  console.log(req.body)
+  const queryTodb = `INSERT INTO messages (content, name, color) VALUES ("${req.body.content}", "${req.body.name}", "${req.body.color}");`
 
   db.run(queryTodb, {}, (err, results) => {
     if (err) {
